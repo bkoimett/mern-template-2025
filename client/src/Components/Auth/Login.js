@@ -67,119 +67,111 @@ const Login = () => {
   };
 
   return (
-    <>
-      <div className="flex min-h-full flex-col justify-center px-6 py-12 lg:px-8">
-        <div className="sm:mx-auto sm:w-full sm:max-w-sm">
-          <img
-            alt="Your Company"
-            src="https://tailwindcss.com/plus-assets/img/logos/mark.svg?color=indigo&shade=500"
-            className="mx-auto h-10 w-auto"
-          />
-          <h2 className="mt-10 text-center text-2xl/9 font-bold tracking-tight text-white">
-            Sign in to your account
-          </h2>
-        </div>
-
-        <div className="mt-10 sm:mx-auto sm:w-full sm:max-w-sm">
-          <form className="space-y-6" onSubmit={handleSubmit(onSubmit)}>
-            <div>
-              <label
-                htmlFor="email"
-                className="block text-sm/6 font-medium text-gray-100"
-              >
-                Email address
-              </label>
-              <div className="mt-2">
-                <input
-                  id="email"
-                  name="email"
-                  type="email"
-                  required
-                  autoComplete="email"
-                  className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-                  {...register("email", {
-                    required: "Email is required",
-                    pattern: {
-                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                      message: "Invalid email address",
-                    },
-                  })}
-                />
-                {errors.email && (
-                  <div className={styles.error}>{errors.email.message}</div>
-                )}
-              </div>
+    <div>
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <div className="hero bg-base-200 min-h-screen">
+          <div className="hero-content flex-col lg:flex-row">
+            <div className="text-center">
+              <h1 className="text-5xl font-bold">Welcome Back</h1>
+              <p className="py-4">
+                Lorem, ipsum dolor sit amet consectetur adipisicing elit. Eum
+                rerum, nesciunt deleniti maxime accusamus minus. Magnam facere
+                veritatis, facilis iste aspernatur quis neque placeat debitis
+                dolor illum distinctio! Neque omnis hic cum quo non debitis
+                libero similique voluptatum assumenda est, porro amet suscipit!
+                Quod repellendus est aliquid optio a officia.
+              </p>
             </div>
+            <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
+              <div className="card-body">
+<h3 className="text-xl font-bold">Sign In</h3>
+                  {/* email field */}
+                  <label htmlFor="email" className="label">
+                    Email
+                  </label>
+                  <input
+                    id="email"
+                    name="email"
+                    type="email"
+                    required
+                    autoComplete="email"
+                    className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                    {...register("email", {
+                      required: "Email is required",
+                      pattern: {
+                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                        message: "Invalid email address",
+                      },
+                    })}
+                  />
+                  {errors.email && (
+                    <div className={styles.error}>{errors.email.message}</div>
+                  )}
 
-            <div>
-              <div className="flex items-center justify-between">
-                <label
-                  htmlFor="password"
-                  className="block text-sm/6 font-medium text-gray-100"
-                >
-                  Password
-                </label>
+                  {/* password field */}
+                  <label htmlFor="password" className="label">
+                    Password
+                  </label>
+                  <input
+                    id="password"
+                    name="password"
+                    type="password"
+                    required
+                    className={styles.input}
+                    {...register("password", {
+                      required: "Password is required",
+                      minLength: {
+                        value: 6,
+                        message: "Password must be at least 6 characters",
+                      },
+                    })}
+                  />
+                  {errors.password && (
+                    <div className={styles.error}>
+                      {errors.password.message}
+                    </div>
+                  )}
+
+                  <div>
+                    <a className="link link-hover">Forgot password?</a>
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={isSubmitting}
+                    className={`flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold text-white ${
+                      isSubmitting
+                        ? "bg-indigo-300"
+                        : "bg-indigo-500 hover:bg-indigo-400"
+                    } focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500`}
+                  >
+                    {isSubmitting ? "Signing in..." : "Sign in"}
+                  </button>
+                  <p className={styles.toggleText}>
+                    Don't have an account?{" "}
+                    <Link to="/register" className={styles.toggleLink}>
+                      Register
+                    </Link>
+                  </p>
+
               </div>
-              <div className="mt-2">
-                <input
-                  id="password"
-                  name="password"
-                  type="password"
-                  className={styles.input}
-                  {...register("password", {
-                    required: "Password is required",
-                    minLength: {
-                      value: 6,
-                      message: "Password must be at least 6 characters",
-                    },
-                  })}
-                />
-                {errors.password && (
-                  <div className={styles.error}>{errors.password.message}</div>
-                )}
-              </div>
-            </div>
-
-            <div>
-              <button
-                type="submit"
-                disabled={isSubmitting}
-                className={`flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold text-white ${
-                  isSubmitting
-                    ? "bg-indigo-300"
-                    : "bg-indigo-500 hover:bg-indigo-400"
-                } focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500`}
-              >
-                {isSubmitting ? "Signing in..." : "Sign in"}
-              </button>
-            </div>
-          </form>
-
-          <p className="mt-10 text-center text-sm/6 text-gray-400">
-            Don't have an account?{" "}
-            <Link
-              to="/register"
-              className="font-semibold text-indigo-400 hover:text-indigo-300"
-            >
-              Register
-            </Link>
-          </p>
-        </div>
-
-        {/* Toast */}
-        {toast.show && (
-          <div className="toast toast-top toast-start">
-            <div
-              className={`alert ${
-                toast.type === "success" ? "alert-success" : "alert-error"
-              }`}
-            >
-              <span>{toast.message}</span>
             </div>
           </div>
-        )}
-      </div>
-    </>
+        </div>
+      </form>
+
+      {/* Toast */}
+      {toast.show && (
+        <div className="toast toast-top toast-start">
+          <div
+            className={`alert ${
+              toast.type === "success" ? "alert-success" : "alert-error"
+            }`}
+          >
+            <span>{toast.message}</span>
+          </div>
+        </div>
+      )}
+    </div>
   );
 };
 
