@@ -4,7 +4,6 @@ import jwt from "jsonwebtoken";
 import dotenv from "dotenv";
 import { generateAccessToken, generateRefreshToken } from "../token.js";
 dotenv.config();
-
 export const registerUser = async (req, res) => {
   try {
     const { name, email, mobile, password } = req.body;

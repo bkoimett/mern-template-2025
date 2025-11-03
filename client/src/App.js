@@ -1,8 +1,8 @@
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import Login from "./Components/Auth/Login";
-import Register from "./Components/Auth/Register";
-// import UserDetails from "./Components/Auth/UserDetails";
-// import LandingPage from "./Components/Auth/LandingPage";
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './Components/Auth/Login';
+import Register from './Components/Auth/Register';
+import UserDetails from './Components/Auth/UserDetails';
+import LandingPage from './Components/Auth/LandingPage';
 
 function App() {
   return (
