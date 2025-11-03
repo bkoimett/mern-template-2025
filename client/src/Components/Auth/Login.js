@@ -84,75 +84,72 @@ const Login = () => {
             </div>
             <div className="card bg-base-100 w-full max-w-sm shrink-0 shadow-2xl">
               <div className="card-body">
-<h3 className="text-xl font-bold">Sign In</h3>
-                  {/* email field */}
-                  <label htmlFor="email" className="label">
-                    Email
-                  </label>
-                  <input
-                    id="email"
-                    name="email"
-                    type="email"
-                    required
-                    autoComplete="email"
-                    className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
-                    {...register("email", {
-                      required: "Email is required",
-                      pattern: {
-                        value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-                        message: "Invalid email address",
-                      },
-                    })}
-                  />
-                  {errors.email && (
-                    <div className={styles.error}>{errors.email.message}</div>
-                  )}
+                <h3 className="text-xl font-bold">Sign In</h3>
+                {/* email field */}
+                <label htmlFor="email" className="label">
+                  Email
+                </label>
+                <input
+                  id="email"
+                  name="email"
+                  type="email"
+                  required
+                  autoComplete="email"
+                  className="block w-full rounded-md bg-white/5 px-3 py-1.5 text-base text-white outline-1 -outline-offset-1 outline-white/10 placeholder:text-gray-500 focus:outline-2 focus:-outline-offset-2 focus:outline-indigo-500 sm:text-sm/6"
+                  {...register("email", {
+                    required: "Email is required",
+                    pattern: {
+                      value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
+                      message: "Invalid email address",
+                    },
+                  })}
+                />
+                {errors.email && (
+                  <div className={styles.error}>{errors.email.message}</div>
+                )}
 
-                  {/* password field */}
-                  <label htmlFor="password" className="label">
-                    Password
-                  </label>
-                  <input
-                    id="password"
-                    name="password"
-                    type="password"
-                    required
-                    className={styles.input}
-                    {...register("password", {
-                      required: "Password is required",
-                      minLength: {
-                        value: 6,
-                        message: "Password must be at least 6 characters",
-                      },
-                    })}
-                  />
-                  {errors.password && (
-                    <div className={styles.error}>
-                      {errors.password.message}
-                    </div>
-                  )}
+                {/* password field */}
+                <label htmlFor="password" className="label">
+                  Password
+                </label>
+                <input
+                  id="password"
+                  name="password"
+                  type="password"
+                  required
+                  className={styles.input}
+                  {...register("password", {
+                    required: "Password is required",
+                    minLength: {
+                      value: 6,
+                      message: "Password must be at least 6 characters",
+                    },
+                  })}
+                />
+                {errors.password && (
+                  <div className={styles.error}>{errors.password.message}</div>
+                )}
 
-                  <div>
-                    <a className="link link-hover">Forgot password?</a>
-                  </div>
-                  <button
-                    type="submit"
-                    disabled={isSubmitting}
-                    className={`flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold text-white ${
-                      isSubmitting
-                        ? "bg-indigo-300"
-                        : "bg-indigo-500 hover:bg-indigo-400"
-                    } focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500`}
-                  >
-                    {isSubmitting ? "Signing in..." : "Sign in"}
-                  </button>
-                  <p className={styles.toggleText}>
-                    Don't have an account?{" "}
-                    <Link to="/register" className={styles.toggleLink}>
-                      Register
-                    </Link>
-                  </p>
-
+                <div>
+                  <a className="link link-hover">Forgot password?</a>
+                </div>
+                <button
+                  type="submit"
+                  disabled={isSubmitting}
+                  className={`flex w-full justify-center rounded-md px-3 py-1.5 text-sm/6 font-semibold text-white ${
+                    isSubmitting
+                      ? "bg-indigo-300"
+                      : "bg-indigo-500 hover:bg-indigo-400"
+                  } focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-indigo-500`}
+                >
+                  {isSubmitting ? "Signing in..." : "Sign in"}
+                </button>
+                <p className={styles.toggleText}>
+                  Don't have an account?{" "}
+                  <Link to="/register" className={styles.toggleLink}>
+                    Register
+                  </Link>
+                </p>
               </div>
             </div>
           </div>
